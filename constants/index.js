@@ -11,6 +11,14 @@ export const METAFIELD_NAMESPACE = {
 export const METAFIELD_KEY = {
   ratings: "ratings",
   avgRating: "avg_rating",
+  camera_ratings: "camera_ratings",
+  battery_ratings: "battery_ratings",
+  display_ratings: "display_ratings",
+  vfm_ratings: "vfm_ratings",
+  camera_avgRating: "camera_avg_rating",
+  battery_avgRating: "battery_avg_rating",
+  display_avgRating: "display_avg_rating",
+  vfm_avgRating: "vfm_avg_rating",
 };
 
 // Event types used by the PRODUCTS_UPDATE webhook (server.js)

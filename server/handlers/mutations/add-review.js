@@ -7,7 +7,17 @@ import { generateShopifyProductGid } from "../../../utilities/metafields";
 export const addReview = async (client, payload) => {
   const {
     product_id: productId,
-    review: { rating, author, email, title, body },
+    review: {
+      rating,
+      author,
+      email,
+      title,
+      body,
+      camera_rating,
+      battery_rating,
+      display_rating,
+      vfm_rating,
+    },
   } = payload;
 
   // We need to validate and sanitize the user input
@@ -16,6 +26,10 @@ export const addReview = async (client, payload) => {
     rating,
     title,
     body,
+    camera_rating,
+    battery_rating,
+    display_rating,
+    vfm_rating,
     name: author,
     email,
     created_at: new Date(),

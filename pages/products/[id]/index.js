@@ -152,9 +152,43 @@ const ProductReviews = () => {
               <Thumbnail source={productThumbnailUrl} alt="" />
             </Stack.Item>
             <Stack.Item>
-              <TextContainer spacing="tight">
-                <TextStyle variation="strong">Overall Rating</TextStyle>
+              <TextContainer>
+                <p align="center">
+                  <b>Overall Rating </b>
+                </p>
                 <Rating value={product?.avgRatingMetafield?.value} />
+              </TextContainer>
+            </Stack.Item>
+            <Stack.Item>
+              <TextContainer>
+                <p align="center">
+                  <b>Camera </b>
+                </p>
+                <Rating value={product?.camera_avgRatingMetafield?.value} />
+              </TextContainer>
+            </Stack.Item>
+            <Stack.Item>
+              <TextContainer>
+                <p align="center">
+                  <b>Value for money </b>
+                </p>
+                <Rating value={product?.vfm_avgRatingMetafield?.value} />
+              </TextContainer>
+            </Stack.Item>
+            <Stack.Item>
+              <TextContainer>
+                <p align="center">
+                  <b>Battery </b>
+                </p>
+                <Rating value={product?.battery_avgRatingMetafield?.value} />
+              </TextContainer>
+            </Stack.Item>
+            <Stack.Item>
+              <TextContainer>
+                <p align="center">
+                  <b>Display </b>
+                </p>
+                <Rating value={product?.display_avgRatingMetafield?.value} />
               </TextContainer>
             </Stack.Item>
           </Stack>

@@ -7,7 +7,7 @@
   "author": "Shopify Inc.",
   "license": "MIT",
   "devDependencies": {
-    "@shopify/checkout-ui-extensions-run": "^0.4.1",
+    "@shopify/checkout-ui-extensions-run": "^0.7.0",
     "eslint": "^7.19.0",
     "eslint-config-prettier": "^7.2.0",
     "eslint-plugin-prettier": "^3.3.0",
@@ -21,7 +21,7 @@
     "lint": "eslint 'src/**'"
   },
   "dependencies": {
-    "@shopify/post-purchase-ui-extensions": "^0.9.3",
+    "@shopify/post-purchase-ui-extensions": "^0.13.0",
     "@shopify/post-purchase-ui-extensions-react": "^0.9.5",
     "react": "^17.0.0"
   }

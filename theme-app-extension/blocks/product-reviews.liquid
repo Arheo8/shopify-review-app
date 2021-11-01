@@ -36,6 +36,14 @@
                 <b>{{ review.created_at | date: "%b %d, %Y" }}</b>
               </p>
             </div>
+            {% assign rating = review.camera_rating | plus: 0 %}
+            {% render "star-rating", rating: rating, fill: block.settings.stars_fill_color, size: block.settings.star_size %}
+            {% assign rating = review.vfm_rating | plus: 0 %}
+            {% render "star-rating", rating: rating, fill: block.settings.stars_fill_color, size: block.settings.star_size %}
+            {% assign rating = review.battery_rating | plus: 0 %}
+            {% render "star-rating", rating: rating, fill: block.settings.stars_fill_color, size: block.settings.star_size %}
+            {% assign rating = review.display_rating | plus: 0 %}
+            {% render "star-rating", rating: rating, fill: block.settings.stars_fill_color, size: block.settings.star_size %}
           </li>
         {% endfor %}
       </ul>

@@ -53,7 +53,6 @@ function ConfiguredApolloProvider({ children }) {
 class App extends NextApp {
   render() {
     const { Component, pageProps, host } = this.props;
-
     return (
       <AppBridgeProvider
         config={{

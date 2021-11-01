@@ -34,7 +34,7 @@ export const getProductQueueMessages = async (client, productId) => {
     })
     .then((response) => {
       const { data } = response;
-
+      console.log("data: " + data);
       // We map the metafield nodes and already JSON.parse the content inside the value field
       return data.product.metafields.edges.map(({ node }) => ({
         ...node,

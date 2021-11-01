@@ -28,6 +28,7 @@
     "@shopify/koa-shopify-auth": "^4.1.2",
     "@shopify/polaris": "^6.2.0",
     "@shopify/polaris-icons": "^4.5.0",
+    "@shopify/post-purchase-ui-extensions": "^0.13.0",
     "@shopify/react-hooks": "^2.0.1",
     "apollo-boost": "^0.4.9",
     "async": "^3.2.0",
@@ -52,6 +53,7 @@
   "devDependencies": {
     "@babel/plugin-transform-runtime": "^7.12.10",
     "@babel/preset-stage-3": "^7.0.0",
+    "@shopify/checkout-ui-extensions-run": "^0.7.0",
     "babel-register": "^6.26.0",
     "husky": "^4.3.6",
     "lint-staged": "^10.5.3",

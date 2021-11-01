@@ -27,6 +27,34 @@ export const GET_PRODUCTS_QUERY = gql`
             id
             value
           }
+          camera_avgRatingMetafield: metafield(
+            namespace: "${METAFIELD_NAMESPACE.general}",
+            key: "${METAFIELD_KEY.camera_avgRating}"
+          ) {
+            id
+            value
+          }
+          display_avgRatingMetafield: metafield(
+            namespace: "${METAFIELD_NAMESPACE.general}",
+            key: "${METAFIELD_KEY.display_avgRating}"
+          ) {
+            id
+            value
+          }
+          battery_avgRatingMetafield: metafield(
+            namespace: "${METAFIELD_NAMESPACE.general}",
+            key: "${METAFIELD_KEY.battery_avgRating}"
+          ) {
+            id
+            value
+          }
+          vfm_avgRatingMetafield: metafield(
+            namespace: "${METAFIELD_NAMESPACE.general}",
+            key: "${METAFIELD_KEY.vfm_avgRating}"
+          ) {
+            id
+            value
+          }
           publicReviews: metafields(
             first: 1,
             namespace: "${METAFIELD_NAMESPACE.publicReviews}"

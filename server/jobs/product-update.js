@@ -7,9 +7,25 @@ import {
   getProductRatings,
   updateProductRatings,
   updateProductAvgRating,
+  updateProductCameraRatings,
+  updateProductCameraAvgRating,
+  updateProductDisplayRatings,
+  updateProductDisplayAvgRating,
+  updateProductBatteryRatings,
+  updateProductBatteryAvgRating,
+  updateProductVFMRatings,
+  updateProductVFMAvgRating,
+  getProductCameraRatings,
+  getProductDisplayRatings,
+  getProductBatteryRatings,
+  getProductVFMRatings,
 } from "../handlers";
 import {
   calculateProductRatings,
+  calculateProductCameraRatings,
+  calculateProductDisplayRatings,
+  calculateProductBatteryRatings,
+  calculateProductVFMRatings,
   calculateWeightedAverageRating,
 } from "../utilities";
 import { MESSAGE_TYPE } from "../../constants";
@@ -48,9 +64,75 @@ export async function performProductUpdateOperations(
     // And, based on the ratings, a new average rating is calculated
     const newAverageRating = calculateWeightedAverageRating(newRatings);
 
+    /////////////////////////////////////////////////////////////////////////////////////////
+
+    const cameraRatings = await getProductCameraRatings(client, productGid);
+    const newCameraRatings = calculateProductCameraRatings(
+      ratingUpdateMessages,
+      cameraRatings
+    );
+    const newCameraAverageRating = calculateWeightedAverageRating(
+      newCameraRatings
+    );
+
+    const displayRatings = await getProductDisplayRatings(client, productGid);
+    const newDisplayRatings = calculateProductDisplayRatings(
+      ratingUpdateMessages,
+      displayRatings
+    );
+    const newDisplayAverageRating = calculateWeightedAverageRating(
+      newDisplayRatings
+    );
+
+    const batteryRatings = await getProductBatteryRatings(client, productGid);
+    const newBatteryRatings = calculateProductBatteryRatings(
+      ratingUpdateMessages,
+      batteryRatings
+    );
+    const newBatteryAverageRating = calculateWeightedAverageRating(
+      newBatteryRatings
+    );
+
+    const vfmRatings = await getProductVFMRatings(client, productGid);
+    const newVFMRatings = calculateProductVFMRatings(
+      ratingUpdateMessages,
+      vfmRatings
+    );
+    const newVFMAverageRating = calculateWeightedAverageRating(newVFMRatings);
+
+    /////////////////////////////////////////////////////////////////////////////////////////
+
     // Both product ratings and product average rating metafields can now be updated
     await updateProductRatings(client, productGid, newRatings);
     await updateProductAvgRating(client, productGid, newAverageRating);
+
+    /////////////////////////////////////////////////////////////////////////////////////////
+
+    await updateProductCameraRatings(client, productGid, newCameraRatings);
+    await updateProductCameraAvgRating(
+      client,
+      productGid,
+      newCameraAverageRating
+    );
+
+    await updateProductDisplayRatings(client, productGid, newDisplayRatings);
+    await updateProductDisplayAvgRating(
+      client,
+      productGid,
+      newDisplayAverageRating
+    );
+
+    await updateProductBatteryRatings(client, productGid, newBatteryRatings);
+    await updateProductBatteryAvgRating(
+      client,
+      productGid,
+      newBatteryAverageRating
+    );
+
+    await updateProductVFMRatings(client, productGid, newVFMRatings);
+    await updateProductVFMAvgRating(client, productGid, newVFMAverageRating);
+
+    /////////////////////////////////////////////////////////////////////////////////////////
   }
 
   // Queue messages will be deleted after they are processed

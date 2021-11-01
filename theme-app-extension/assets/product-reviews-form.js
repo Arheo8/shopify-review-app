@@ -18,6 +18,10 @@
           author: selectElement("#prapp-form__name").value,
           email: selectElement("#prapp-form__email").value,
           title: selectElement("#prapp-form__title").value,
+          camera_rating: selectElement("#prapp-form__camera_rating").value,
+          vfm_rating: selectElement("#prapp-form__vfm_rating").value,
+          battery_rating: selectElement("#prapp-form__battery_rating").value,
+          display_rating: selectElement("#prapp-form__display_rating").value,
           body: selectElement("#prapp-form__comment").value,
         },
       }),
@@ -189,6 +193,26 @@
         name: "comment",
         labelProps: { attributes: { textContent: "Review" } },
         fieldProps: { tag: "textarea", attributes: { placeholder: "Review" } },
+      },
+      {
+        parentNode: form,
+        name: "camera_rating",
+        fieldProps: { tag: "select", children: ratingOptions },
+      },
+      {
+        parentNode: form,
+        name: "vfm_rating",
+        fieldProps: { tag: "select", children: ratingOptions },
+      },
+      {
+        parentNode: form,
+        name: "battery_rating",
+        fieldProps: { tag: "select", children: ratingOptions },
+      },
+      {
+        parentNode: form,
+        name: "display_rating",
+        fieldProps: { tag: "select", children: ratingOptions },
       },
     ].forEach((props) => createField(props));
 

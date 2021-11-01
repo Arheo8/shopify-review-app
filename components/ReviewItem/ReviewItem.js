@@ -5,7 +5,18 @@ import { Rating } from "components";
 import styles from "./ReviewItem.module.css";
 
 export const ReviewItem = ({ review }) => {
-  const { body, created_at, email, name, rating, title } = review.value;
+  const {
+    body,
+    created_at,
+    email,
+    name,
+    rating,
+    title,
+    camera_rating,
+    vfm_rating,
+    battery_rating,
+    display_rating,
+  } = review.value;
 
   const formattedDate = useMemo(() => {
     if (!created_at) return "";
@@ -27,6 +38,12 @@ export const ReviewItem = ({ review }) => {
         <Caption>
           Reviewed on {formattedDate} by {name} - {email}
         </Caption>
+      </div>
+      <div>
+        <Rating value={camera_rating} />
+        <Rating value={vfm_rating} />
+        <Rating value={battery_rating} />
+        <Rating value={display_rating} />
       </div>
     </article>
   );

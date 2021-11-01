@@ -80,6 +80,103 @@ export const calculateWeightedAverageRating = (ratings) => {
   return 0;
 };
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+export function calculateProductCameraRatings(messages, oldRatings) {
+  const newRatings = merge({}, oldRatings);
+
+  messages.forEach((message) => {
+    const {
+      value: {
+        type,
+        data: {
+          review_snapshot: { camera_rating },
+        },
+      },
+    } = message;
+
+    if (!camera_rating) return;
+    const ratingClass = newRatings[camera_rating];
+    const offset = type === MESSAGE_TYPE.reviewPublished ? 1 : -1;
+    const newTotal = Math.max(0, ratingClass.total + camera_rating * offset);
+
+    newRatings[camera_rating] = { ...ratingClass, total: newTotal };
+  });
+
+  return newRatings;
+}
+export function calculateProductDisplayRatings(messages, oldRatings) {
+  const newRatings = merge({}, oldRatings);
+
+  messages.forEach((message) => {
+    const {
+      value: {
+        type,
+        data: {
+          review_snapshot: { display_rating },
+        },
+      },
+    } = message;
+
+    if (!display_rating) return;
+    const ratingClass = newRatings[display_rating];
+    const offset = type === MESSAGE_TYPE.reviewPublished ? 1 : -1;
+    const newTotal = Math.max(0, ratingClass.total + display_rating * offset);
+
+    newRatings[display_rating] = { ...ratingClass, total: newTotal };
+  });
+
+  return newRatings;
+}
+export function calculateProductBatteryRatings(messages, oldRatings) {
+  const newRatings = merge({}, oldRatings);
+
+  messages.forEach((message) => {
+    const {
+      value: {
+        type,
+        data: {
+          review_snapshot: { battery_rating },
+        },
+      },
+    } = message;
+
+    if (!battery_rating) return;
+    const ratingClass = newRatings[battery_rating];
+    const offset = type === MESSAGE_TYPE.reviewPublished ? 1 : -1;
+    const newTotal = Math.max(0, ratingClass.total + battery_rating * offset);
+
+    newRatings[battery_rating] = { ...ratingClass, total: newTotal };
+  });
+
+  return newRatings;
+}
+export function calculateProductVFMRatings(messages, oldRatings) {
+  const newRatings = merge({}, oldRatings);
+
+  messages.forEach((message) => {
+    const {
+      value: {
+        type,
+        data: {
+          review_snapshot: { vfm_rating },
+        },
+      },
+    } = message;
+
+    if (!vfm_rating) return;
+    const ratingClass = newRatings[vfm_rating];
+    const offset = type === MESSAGE_TYPE.reviewPublished ? 1 : -1;
+    const newTotal = Math.max(0, ratingClass.total + vfm_rating * offset);
+
+    newRatings[vfm_rating] = { ...ratingClass, total: newTotal };
+  });
+
+  return newRatings;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 /**
  * Check if an specific app block wsa added to a template file.
  */

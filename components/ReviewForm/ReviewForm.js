@@ -25,6 +25,10 @@ export const ReviewForm = ({ productId, productInfo }) => {
   const [body, setBody] = useState(
     "Tiramisu cotton candy cotton candy cotton candy. Icing jelly jelly beans. Jelly-o caramels gummi bears gingerbread. Sesame snaps wafer topping apple pie lollipop caramels. Liquorice jelly beans candy. Icing jujubes cotton candy cake pastry carrot cake gingerbread. Bear claw bonbon liquorice biscuit chocolate cake tart sweet"
   );
+  const [camera_rating, setCamera] = useState("5");
+  const [vfm_rating, setValueForMoney] = useState("5");
+  const [battery_rating, setBattery] = useState("5");
+  const [display_rating, setDisplay] = useState("5");
   const [processing, setProcessing] = useState(false);
   const router = useRouter();
 
@@ -45,6 +49,10 @@ export const ReviewForm = ({ productId, productInfo }) => {
         rating,
         title,
         body,
+        camera_rating,
+        vfm_rating,
+        battery_rating,
+        display_rating,
         created_at: new Date().toISOString(),
         id: reviewId,
         state: "unpublished",
@@ -116,6 +124,46 @@ export const ReviewForm = ({ productId, productInfo }) => {
               value={body}
               multiline={8}
             />
+            <FormLayout.Group>
+              <Select
+                label="Camera"
+                options={[...Array(5)].map((_, i) => ({
+                  label: "⭐".repeat(i + 1),
+                  value: String(i + 1),
+                }))}
+                value={camera_rating}
+                onChange={setCamera}
+              />
+              <Select
+                label="Value for money"
+                options={[...Array(5)].map((_, i) => ({
+                  label: "⭐".repeat(i + 1),
+                  value: String(i + 1),
+                }))}
+                value={vfm_rating}
+                onChange={setValueForMoney}
+              />
+            </FormLayout.Group>
+            <FormLayout.Group>
+              <Select
+                label="Battery"
+                options={[...Array(5)].map((_, i) => ({
+                  label: "⭐".repeat(i + 1),
+                  value: String(i + 1),
+                }))}
+                value={battery_rating}
+                onChange={setBattery}
+              />
+              <Select
+                label="Display"
+                options={[...Array(5)].map((_, i) => ({
+                  label: "⭐".repeat(i + 1),
+                  value: String(i + 1),
+                }))}
+                value={display_rating}
+                onChange={setDisplay}
+              />
+            </FormLayout.Group>
             <Button primary submit loading={processing}>
               Create Review
             </Button>
